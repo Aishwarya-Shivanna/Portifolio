@@ -37,7 +37,7 @@ export function Hero() {
               Hi, I&apos;m Aishwarya Shivanna
             </h1>
             <p className="mt-6 text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl">
-              Business Analytics Master's Student|Python| SQL| Excel| Tableau| Rapid Miner| Power Query| Power BI
+              Business Analytics Master&apos;s Student|Python| SQL| Excel| Tableau| Rapid Miner| Power Query| Power BI
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <Link

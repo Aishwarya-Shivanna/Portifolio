@@ -1,7 +1,7 @@
 "use client";
 
 import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
-import { BookOpenCheck, BookText, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import Link from "next/link";
 
 /**

@@ -1,13 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Award, Brain, Building2, Cloud, Code, GraduationCap, Sparkles } from "lucide-react";
+import {  Building2, Code, GraduationCap, } from "lucide-react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { certifications } from "@/data/certifications";
+
 import { education } from "@/data/education";
-import { experiences, previousExperiences } from "@/data/experience";
+import { experiences } from "@/data/experience";
 import { hobbies } from "@/data/hobbies";
 import { skillCategories } from "@/data/skills";
 
@@ -36,7 +36,7 @@ export function AboutDetail() {
             <div>
               <h1 className="text-4xl md:text-5xl font-bold mb-4">Aishwarya Shivanna</h1>
               <p className="text-xl text-muted-foreground mb-4">
-                Business Analytics Master's Student
+                Business Analytics Master&apos;s Student
               </p>
              
             </div>
