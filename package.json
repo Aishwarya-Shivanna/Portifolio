@@ -75,7 +75,7 @@
     "aws-cdk-lib": "^2.189.1",
     "constructs": "^10.4.0",
     "eslint": "^8.56.0",
-    "eslint-config-next": "14.2.33",
+    "eslint-config-next": "15.5.9",
     "gh-pages": "^6.3.0",
     "happy-dom": "^20.0.5",
     "husky": "^9.1.7",
