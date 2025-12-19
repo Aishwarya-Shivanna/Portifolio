@@ -1,0 +1,6 @@
+User-Agent: *
+Allow: /
+Disallow: /api/*
+Disallow: /admin/*
+
+Sitemap: https://bjornmelin.com/sitemap.xml
