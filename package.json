@@ -8,6 +8,7 @@
   },
   "scripts": {
     "dev": "next dev",
+    "deploy": "npm run build && npx gh-pages -d out",
     "build": "next build",
     "start": "npx serve@latest out",
     "lint": "biome check . --write --error-on-warnings",
@@ -75,6 +76,7 @@
     "constructs": "^10.4.0",
     "eslint": "^8.56.0",
     "eslint-config-next": "14.2.33",
+    "gh-pages": "^6.3.0",
     "happy-dom": "^20.0.5",
     "husky": "^9.1.7",
     "jsdom": "^27.0.1",
