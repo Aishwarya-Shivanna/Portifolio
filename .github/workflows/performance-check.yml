@@ -1,0 +1,149 @@
+name: Performance Check
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  lighthouse:
+    name: Lighthouse CI
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Install pnpm (action)
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js and pnpm
+        uses: ./.github/actions/setup-node-pnpm
+        with:
+          install: "true"
+
+      - name: Build application
+        run: pnpm build
+        env:
+          NEXT_PUBLIC_BASE_URL: http://localhost:3000
+          NEXT_PUBLIC_APP_URL: http://localhost:3000
+          AWS_REGION: us-east-1
+          CONTACT_EMAIL: test@example.com
+          NODE_ENV: production
+
+      - name: Serve static site
+        run: npx serve@latest out &
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+          configPath: ./.github/lighthouse/lighthouserc.json
+
+      - name: Comment PR with results
+        if: github.event_name == 'pull_request' && always() && github.event.pull_request.head.repo.fork == false
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const fs = require('fs');
+            let comment = '';
+            
+            if (fs.existsSync('./lighthouse-results.json')) {
+              try {
+                const results = require('./lighthouse-results.json');
+                comment = `## 🚦 Lighthouse Performance Report
+                
+                | Metric | Score |
+                |--------|-------|
+                | Performance | ${results.performance}% |
+                | Accessibility | ${results.accessibility}% |
+                | Best Practices | ${results.bestPractices}% |
+                | SEO | ${results.seo}% |
+                `;
+              } catch (error) {
+                comment = `## 🚦 Lighthouse Performance Report\n\n❌ Error parsing Lighthouse results: ${error.message}`;
+              }
+            } else {
+              comment = `## 🚦 Lighthouse Performance Report\n\n⚠️ Lighthouse results not found. The performance check may have failed.`;
+            }
+            try {
+              await github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: comment
+              });
+            } catch (err) {
+              core.warning(`Skipping Lighthouse PR comment: ${err?.message ?? err}`);
+            }
+
+  bundle-size:
+    needs: lighthouse
+    name: Bundle Size Check
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Install pnpm (action)
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js and pnpm
+        uses: ./.github/actions/setup-node-pnpm
+        with:
+          install: "true"
+
+      - name: Build and analyze bundle
+        env:
+          NEXT_PUBLIC_BASE_URL: http://localhost:3000
+          NEXT_PUBLIC_APP_URL: http://localhost:3000
+          AWS_REGION: us-east-1
+          CONTACT_EMAIL: test@example.com
+        run: |
+          pnpm build
+          {
+            echo "## Bundle Size Report"
+            echo ""
+            echo "| File | Size | Gzipped |"
+            echo "|------|------|---------|"
+          } > bundle-report.md
+
+          # Find and measure JS bundles
+          find .next/static/chunks -name "*.js" -type f | while read -r file; do
+            size=$(du -h "$file" | cut -f1)
+            gzipped=$(gzip -c "$file" | wc -c | numfmt --to=iec)
+            filename=$(basename "$file")
+            echo "| $filename | $size | $gzipped |" >> bundle-report.md
+          done
+          {
+            echo "## Bundle Size Report"
+            echo ""
+            echo "| File | Size | Gzipped |"
+            echo "|------|------|---------|"
+          } > bundle-report.md
+
+          # Find and measure JS bundles
+          find .next/static/chunks -name "*.js" -type f | while read -r file; do
+            size=$(du -h "$file" | cut -f1)
+            gzipped=$(gzip -c "$file" | wc -c | numfmt --to=iec)
+            filename=$(basename "$file")
+            echo "| $filename | $size | $gzipped |" >> bundle-report.md
+          done
+
+      - name: Upload bundle analysis
+        uses: actions/upload-artifact@v5
+        with:
+          name: bundle-analysis
+          path: |
+            bundle-report.md
+            .next/analyze/
+          retention-days: 7
