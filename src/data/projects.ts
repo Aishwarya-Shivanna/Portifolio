@@ -1,5 +1,6 @@
 import type { Project } from "@/types/project";
 
+
 export const projectsData: Project[] = [
   {
     id: "1",
