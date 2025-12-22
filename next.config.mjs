@@ -5,13 +5,7 @@ const nextConfig = {
   assetPrefix: "/Portifolio/",
   images: {
     unoptimized: true,
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "aishwarya-shivanna.github.io",
-        pathname: "/Portifolio/**",
-      },
-    ],
   },
 };
 export default nextConfig;
+
