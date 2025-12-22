@@ -25,7 +25,7 @@ export function AboutDetail() {
           <div className="flex flex-col md:flex-row items-center gap-8">
             <div className="relative w-48 h-48 rounded-full overflow-hidden border-4 border-primary/10">
               <Image
-                src="/headshot/image.png"
+                src="/Portifolio/headshot/image.png"
                 alt="Aishwarya Shivanna"
                 fill
                 sizes="192px"
