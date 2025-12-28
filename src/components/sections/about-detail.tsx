@@ -183,7 +183,7 @@ With a Master&apos;s degree in Business Analytics from Northern Arizona Universi
                     <p className="text-sm text-muted-foreground">
                       {education.startDate} - {education.endDate}
                     </p>
-                    <p className="text-sm font-medium text-primary">GPA: {education.gpa}</p>
+                    
                   </div>
                 </div>
                 <div className="mt-3">
@@ -228,7 +228,7 @@ With a Master&apos;s degree in Business Analytics from Northern Arizona Universi
               </svg>
               Hobbies & Interests
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
               {hobbies.map((hobby) => (
                 <div key={hobby.name} className="space-y-2">
                   <Badge variant="outline" className="bg-primary/5 text-base py-2 px-3">

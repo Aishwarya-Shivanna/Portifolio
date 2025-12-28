@@ -42,10 +42,7 @@ export function About() {
               <h3 className="text-2xl font-semibold">Background</h3>
             </div>
             <p className="text-muted-foreground leading-relaxed">
-              Holds a Bachelor’s in Management Studies specializing in International Finance, with
-experience in finance projects and business research. Skilled in data analysis, Microsoft Office, and delivering insights for decision-
-making. A quick learner with strong communication, analytical, and teamwork skills, eager to apply technical knowledge to drive
-impactful, data-driven solutions as a Business Analyst.
+             I am a Business Analyst specializing in data mining, predictive analytics, and business intelligence. Experienced in SQL, Python/R, Tableau, and Power BI, with a strong focus on turning complex data into actionable insights that support strategic decision-making. This portfolio highlights real-world analytics projects emphasizing business impact, clear storytelling, and stakeholder-ready insights.
             </p>
           </Card>
 
