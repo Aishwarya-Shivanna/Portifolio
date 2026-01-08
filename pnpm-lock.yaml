@@ -52,7 +52,7 @@ importers:
         version: 1.2.15(@types/react-dom@18.3.7(@types/react@18.3.26))(@types/react@18.3.26)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@t3-oss/env-nextjs':
         specifier: ^0.13.8
-        version: 0.13.8(typescript@5.9.3)(zod@3.25.67)
+        version: 0.13.8(typescript@5.9.3)(zod@4.2.1)
       '@tanstack/react-query':
         specifier: ^5.90.5
         version: 5.90.5(react@18.3.1)
@@ -96,8 +96,8 @@ importers:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.4.17(ts-node@10.9.2(@types/node@24.8.1)(typescript@5.9.3)))
       zod:
-        specifier: ^3.24.1
-        version: 3.25.67
+        specifier: ^4.2.1
+        version: 4.2.1
     devDependencies:
       '@biomejs/biome':
         specifier: ~2.2.6
@@ -279,6 +279,7 @@ packages:
   '@aws-sdk/credential-provider-web-identity@3.917.0':
     resolution: {integrity: sha512-pZncQhFbwW04pB0jcD5OFv3x2gAddDYCVxyJVixgyhSw7bKCYxqu6ramfq1NxyVpmm+qsw+ijwi/3cCmhUHF/A==}
     engines: {node: '>=18.0.0'}
+    deprecated: This version contains a compilation TypeScript error https://github.com/aws/aws-sdk-js-v3/issues/7457 - please use @aws-sdk/credential-providers@3.918.0 or higher
 
   '@aws-sdk/middleware-host-header@3.914.0':
     resolution: {integrity: sha512-7r9ToySQ15+iIgXMF/h616PcQStByylVkCshmQqcdeynD/lCn2l667ynckxW4+ql0Q+Bo/URljuhJRxVJzydNA==}
@@ -1701,8 +1702,8 @@ packages:
     peerDependencies:
       '@testing-library/dom': '>=7.21.4'
 
-  '@tsconfig/node10@1.0.11':
-    resolution: {integrity: sha512-DcRjDCujK/kCk/cUe8Xz8ZSpm8mS3mNNpta+jGCA6USEDfktlNvm1+IuZ9eTcDbNk41BHwpHHeW+N1lKCz4zOw==}
+  '@tsconfig/node10@1.0.12':
+    resolution: {integrity: sha512-UCYBaeFvM11aU2y3YPZ//O5Rhj+xKyzy7mvcIoAjASbigy8mHMryP5cK7dgjlz2hWxh1g5pLw084E0a/wlUSFQ==}
 
   '@tsconfig/node12@1.0.11':
     resolution: {integrity: sha512-cqefuRsh12pWyGsIoBKJA9luFu3mRxCA+ORZvA4ktLSzIuCUtWVxGIuXigEwO5/ywWFMZ2QEGKWvkZG1zDMTag==}
@@ -3500,6 +3501,7 @@ packages:
   next@14.2.33:
     resolution: {integrity: sha512-GiKHLsD00t4ACm1p00VgrI0rUFAC9cRDGReKyERlM57aeEZkOQGcZTpIbsGn0b562FTPJWmYfKwplfO9EaT6ng==}
     engines: {node: '>=18.17.0'}
+    deprecated: This version has a security vulnerability. Please upgrade to a patched version. See https://nextjs.org/blog/security-update-2025-12-11 for more details.
     hasBin: true
     peerDependencies:
       '@opentelemetry/api': ^1.1.0
@@ -3728,8 +3730,8 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  prettier@3.6.2:
-    resolution: {integrity: sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==}
+  prettier@3.7.4:
+    resolution: {integrity: sha512-v6UNi1+3hSlVvv8fSaoUbggEM5VErKmmpGA7Pl3HF8V6uKY7rvClBOJlH6yNwQtfTueNkGVpOv/mtWL9L4bgRA==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -4497,8 +4499,8 @@ packages:
     resolution: {integrity: sha512-AyeEbWOu/TAXdxlV9wmGcR0+yh2j3vYPGOECcIj2S7MkrLyC7ne+oye2BKTItt0ii2PHk4cDy+95+LshzbXnGg==}
     engines: {node: '>=12.20'}
 
-  zod@3.25.67:
-    resolution: {integrity: sha512-idA2YXwpCdqUSKRCACDE6ItZD9TZzy3OZMtpfLoh6oPR47lipysRrJfjzMqFxQ3uJuUPyUeWe1r9vLH33xO/Qw==}
+  zod@4.2.1:
+    resolution: {integrity: sha512-0wZ1IRqGGhMP76gLqz8EyfBXKk0J2qo2+H3fi4mcUP/KtTocoX08nmIAHl1Z2kJIZbZee8KOpBCSNPRgauucjw==}
 
 snapshots:
 
@@ -5915,7 +5917,7 @@ snapshots:
   '@react-email/render@1.1.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       html-to-text: 9.0.5
-      prettier: 3.6.2
+      prettier: 3.7.4
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       react-promise-suspense: 0.3.4
@@ -6297,17 +6299,17 @@ snapshots:
       '@swc/counter': 0.1.3
       tslib: 2.8.1
 
-  '@t3-oss/env-core@0.13.8(typescript@5.9.3)(zod@3.25.67)':
+  '@t3-oss/env-core@0.13.8(typescript@5.9.3)(zod@4.2.1)':
     optionalDependencies:
       typescript: 5.9.3
-      zod: 3.25.67
+      zod: 4.2.1
 
-  '@t3-oss/env-nextjs@0.13.8(typescript@5.9.3)(zod@3.25.67)':
+  '@t3-oss/env-nextjs@0.13.8(typescript@5.9.3)(zod@4.2.1)':
     dependencies:
-      '@t3-oss/env-core': 0.13.8(typescript@5.9.3)(zod@3.25.67)
+      '@t3-oss/env-core': 0.13.8(typescript@5.9.3)(zod@4.2.1)
     optionalDependencies:
       typescript: 5.9.3
-      zod: 3.25.67
+      zod: 4.2.1
 
   '@tanstack/query-core@5.90.5': {}
 
@@ -6350,7 +6352,7 @@ snapshots:
     dependencies:
       '@testing-library/dom': 10.4.0
 
-  '@tsconfig/node10@1.0.11':
+  '@tsconfig/node10@1.0.12':
     optional: true
 
   '@tsconfig/node12@1.0.11':
@@ -8695,7 +8697,7 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier@3.6.2:
+  prettier@3.7.4:
     optional: true
 
   pretty-format@27.5.1:
@@ -9231,7 +9233,7 @@ snapshots:
   ts-node@10.9.2(@types/node@24.8.1)(typescript@5.9.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
-      '@tsconfig/node10': 1.0.11
+      '@tsconfig/node10': 1.0.12
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
@@ -9569,4 +9571,4 @@ snapshots:
 
   yocto-queue@1.2.1: {}
 
-  zod@3.25.67: {}
+  zod@4.2.1: {}
